@@ -1,0 +1,9 @@
+dbs:
+ - path: $DB_PATH
+   replicas:
+     - type: s3
+       bucket: $REPLICATE_BUCKET_NAME
+       path: replica
+       region: ap-northeast-1
+       retention: 120h # WALファイルを保持期間
+       snapshot-interval: 30s # スナップショット取得インターバル
