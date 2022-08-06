@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
@@ -21,6 +22,8 @@ type task struct {
 
 func (lt *ListTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
+	log.Printf("RemoteAddr: %s\n", r.RemoteAddr)
+
 	tasks, err := lt.Service.ListTasks(ctx)
 	if err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
