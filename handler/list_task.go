@@ -27,7 +27,7 @@ func (lt *ListTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	fwdAddress := r.Header.Get("X-Forwarded-For")
 	if fwdAddress != "" {
-		ips := strings.Split(fwdAddress, ", ")
+		ips := strings.Split(fwdAddress, ",")
 
 		for i, ip := range ips {
 			log.Printf("X-Forwarded-For[%d]: %s", i, ip)
